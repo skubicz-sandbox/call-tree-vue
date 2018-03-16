@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Vue app</title>
+    <script src="vue.min.js"></script>
+    <script src="data.js"></script>
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="popper-1.12.9.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="main.css"/>
+    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div id="application">
+    <div class="classes-list">
+        <div class="general-info top-bar">
+            GENERATED: 2017-01-01
+        </div>
+        <input type="text" class="form-control" v-model="searchedClass"  placeholder="Search classes" />
+        <div class="">
+            <a href="#" v-for="(classRoot, index) in filterClasses(classes)" v-on:click="showDetails(index)" :class="index === searchedClassesSize - 1 ? 'last' : ''">
+                {{ classRoot.className.packagePart }}.{{ classRoot.className.namePart }}
+            </a>
+        </div>
+    </div>
+    <div v-if="currentClass" class="class-details">
+        <div class="class-details-header top-bar">
+            <div>
+                {{ currentClass.className.packagePart }}.{{ currentClass.className.namePart }}
+            </div>
+            <button class="btn btn-link" v-on:click="showAllMethods()">Show all</button>
+        </div>
+        <input type="text" class="form-control" v-model="searchedExpression[currentClassIndex]"  placeholder="Search executions"/>
+
+        <div class="method-root-details" :class="[index === currentClass.methods.length - 1 ? 'last' : '']" v-for="(methodRoot, index) in currentClass.methods" class="">
+            <div class="method-root-details-header" :class="[methodRoot.executions.length === 0 ? 'disable' : '']" v-on:click="showHideMethod(index)">
+                <div v-if="methodRoot.method">
+                    <method v-bind:method="methodRoot.method"></method>
+                </div>
+            </div>
+
+            <div :id="'methodRootDetails' + index" v-if="methodRoot.executions.length !== 0" class="collapse">
+                <div class="method-root-details-body">
+                    <div>
+                        <executions v-bind:current-class-id="currentClassIndex" v-bind:current-method-root-id="index" v-bind:executions="methodRoot.executions"></executions>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="!currentClass" class="empty-class-details">
+        <span>CHOOSE CLASS FROM RIGHT PANEL</span>
+    </div>
+</div>
+
+<script>
+    Vue.component('method', {
+        props: ['method'],
+        template:
+        '<div class="method-details">' +
+            '<div class="comment">{{ this.method.comment }}</div>' +
+            '<div class="annotation" v-for="(annotation) in method.annotations">@{{ annotation.namePart }}</div>' +
+            '<div><span v-if="this.method.returnType">{{ this.method.returnType.namePart }}</span> <span class="method-name">{{ this.method.name }}</span>({{ this.drawParameters(this.method.parameters) }})</div>' +
+        '</div>',
+        methods: {
+            drawParameters(parameters) {
+                if(!parameters) {
+                    return "";
+                }
+                var parametersText = "";
+                parameters.forEach(param => {
+                    parametersText = parametersText + param.namePart + ",";
+                })
+                return parametersText.slice(0, -1);
+            }
+        }
+    })
+
+    Vue.component('executions', {
+        props: ['current-class-id', 'current-method-root-id', 'executions'],
+        //data: function(){
+        //    return {
+        //    }
+        //},
+        compiled: function () {
+        },
+        template:
+        '<div class="executions-list">' +
+            '<ul>' +
+                '<li class="" v-for="(execution, index) in filterExecutions(executions)">' +
+                    '<div v-on:click="showMethodDetails" :class="!execution.method ? \'empty-method\' : \'\' " class="execution-expression" v-if="execution.callExpression">{{ execution.callExpression }}' +
+                     '<div class="execution-method" style="display: none" v-if="execution.method">' +
+                        '<button type="button" v-on:click="closeMethodDetails" class="close" aria-label="Close">&times</button>' +
+                        '<method v-bind:method="execution.method"></method>' +
+        '             </div>' +
+                    '</div>' +
+                    '<executions v-bind:executions="execution.children" v-bind:current-method-root-id="currentMethodRootId" v-bind:currentClassId="currentClassId"></executions>' +
+                '</li>' +
+            '</ul>' +
+        '</div>',
+        methods: {
+            filterExecutions(executions) {
+                return this.$root.filterExecutions(executions, this.$root.searchedExpression[this.currentClassId])
+            },
+            generateId(currentMethodRootId, index) {
+                return "expression" + currentMethodRootId + '-' + index;
+            },
+            showMethodDetails(event) {
+             //   $(".execution-method").hide();
+                var el = $(event.target).find(".execution-method");
+
+                el.toggle();
+             //   alert($(event.target).parent().find(".execution-method").attr('class'));
+            },
+            closeMethodDetails(event) {
+                //   $(".execution-method").hide();
+                var el = $(event.target).parent();
+
+                el.hide();
+                //   alert($(event.target).parent().find(".execution-method").attr('class'));
+            }
+        }
+    })
+
+    var app = new Vue({
+        el: '#application',
+        data: {
+            classes: DATA,
+            filteredClasses: DATA,
+            currentClass: null,
+            currentClassIndex: 0,
+            searchedExpression: [],
+            searchedClass: '',
+            searchedClassesSize: 0
+        },
+        methods: {
+            showAllMethods() {
+                $('.collapse').collapse('show');
+            },
+            showHideMethod(index) {
+                $('#methodRootDetails' + index).collapse('toggle');
+            },
+            showDetails(index) {
+                this.currentClass = this.filteredClasses[index];
+                this.currentClassIndex = index;
+                $('.collapse').collapse('hide');
+            },
+            isStringInclude(str, substring) {
+                if (!substring) {
+                    return true;
+                }
+                if (!str) {
+                    return false;
+                }
+                return str.toLowerCase().indexOf(substring.toLowerCase()) > -1;
+            },
+            isSearchedClassInclude(str) {
+                if (!str) {
+                    return false;
+                }
+                return this.isStringInclude(str, this.searchedClass);
+            },
+            filterClasses(classes) {
+                var filtered = classes.filter(item => {
+                    return this.isSearchedClassInclude(item.className.packagePart)
+                        || this.isSearchedClassInclude(item.className.namePart)
+                    //    || this.filterRootMethods(item.methods)
+                })
+
+                this.searchedClassesSize = filtered.length;
+                this.filteredClasses = filtered;
+                return filtered;
+            },
+            //filterRootMethods(rootMethods) {
+            //    if (!rootMethods) {
+            //        return false;
+            //    }
+            //    return rootMethods.filter(item => {
+            //        return this.filterMethod(item.method)
+            //            || this.filterExecutions(item.executions)
+            //    })
+            //},
+            //isSearchedExecutionInclude(str, searchedExpression) {
+            //    if (!str) {
+            //        return false;
+            //    }
+            //    return this.isStringInclude(str, searchedExpression);
+            //},
+            //filterMethod(method) {
+            //    if (!method) {
+            //        return false;
+            //    }
+            //    return this.isSearchedExecutionInclude(method.comment)
+            //        || this.isSearchedExecutionInclude(method.name);
+            //},
+            filterExecutions(executions, searchedExpression) {
+                if (!executions) {
+                    return null;
+                }
+                return executions.filter(item => {
+                    //   console.log(item.callExpression);
+                    return this.filterExecution(item, searchedExpression)
+                })
+            },
+            filterExecution(execution, searchedExpression) {
+                if (!execution) {
+                    return false;
+                }
+
+                var fit = this.isStringInclude(execution.callExpression, searchedExpression)
+                    //    || this.filterMethod(item.method)
+                ;
+
+                if (fit) {
+                    return true;
+                }
+                if (!execution.children) {
+                    return false;
+                }
+
+                execution.children.forEach(item => {
+                    if (this.filterExecution(item, searchedExpression)) {
+                        fit = true;
+                    }
+                })
+
+                return fit;
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

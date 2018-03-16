@@ -1,0 +1,3133 @@
+var DATA = [ {
+  "className" : {
+    "namePart" : "ProxyEndpoint",
+    "packagePart" : "com.comarch.c2arm.stubserver.endpoints.proxy"
+  },
+  "methods" : [ {
+    "method" : {
+      "comment" : "",
+      "name" : "proxyPostByIp"
+    },
+    "executions" : [ {
+      "callExpression" : "Call.fromRequest(request, content)",
+      "children" : [ {
+        "callExpression" : "request.getMethod()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "HttpMethod.valueOf(request.getMethod())",
+        "children" : null
+      }, {
+        "callExpression" : "request.getRequestURI()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getContentType()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getRequestURL()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getRequestURL().toString()",
+        "children" : [ {
+          "callExpression" : "request.getRequestURL()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "request.getPathInfo()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "requestPath.startsWith(ProxyEndpoint.PROXY_PATH)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getParameterNames()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "parameterNames.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getParameterValues(parameterName)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "values.add(value)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "call.parameters.put(parameterName, values)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getHeaderNames()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "headerNames.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getHeaders(headerName)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "headerValues.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "values.add(value)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "call.headers.put(headerName, values)",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "request.getRemoteHost()",
+      "children" : [ ]
+    }, {
+      "callExpression" : "InetAddress.getByName(request.getRemoteHost())",
+      "children" : [ {
+        "callExpression" : "request.getRemoteHost()",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "InetAddress.getByName(request.getRemoteHost()).getHostAddress()",
+      "children" : [ {
+        "callExpression" : "request.getRemoteHost()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "InetAddress.getByName(request.getRemoteHost())",
+        "children" : [ {
+          "callExpression" : "request.getRemoteHost()",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "callExpression" : "proxyService.proxy(call, systemType, ProxyFilter.of(sourceAddress, null))",
+      "children" : [ {
+        "callExpression" : "call.getServiceName()",
+        "children" : null
+      }, {
+        "callExpression" : "LOGGER.info(\"Request \" + call.getServiceName() + \", target system: \" + targetSystemType + \", proxy filter: \" + proxyFilter)",
+        "children" : [ {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        } ]
+      }, {
+        "callExpression" : "configsRepository.getProxyConfiguration()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system not found\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst().get()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+            "children" : [ {
+              "callExpression" : "targetSystems.stream()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system: \" + system)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "system.getAddress().matches(\"http(s?)://.*\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "new ExternalSystemClient(call, targetAddress).call()",
+        "children" : [ {
+          "callExpression" : "getClient()",
+          "children" : [ {
+            "callExpression" : "ClientBuilder.newClient()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "e.printStackTrace()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "client.target(externalServiceHost)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        }, {
+          "callExpression" : "client.target(externalServiceHost).path(call.getServiceName())",
+          "children" : [ {
+            "callExpression" : "client.target(externalServiceHost)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getServiceName()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getParameters()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getContentType()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getHeaders()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getMethod()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getMethod().toString()",
+          "children" : [ {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getPostBody()",
+          "children" : null
+        }, {
+          "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+          "children" : [ {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders()).method(call.getMethod().toString(), Entity.entity(call.getPostBody(), mediaType))",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          }, {
+            "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+            "children" : [ {
+              "callExpression" : "target.request(mediaType)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "call.getHeaders()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getMethod().toString()",
+            "children" : [ {
+              "callExpression" : "call.getMethod()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          }, {
+            "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+            "children" : [ {
+              "callExpression" : "call.getPostBody()",
+              "children" : null
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.error(\"Nie powiodło się ustawienie nagłówka TargetSystem.\", e)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "proxyPostByLabel"
+    },
+    "executions" : [ {
+      "callExpression" : "Call.fromRequest(request, content)",
+      "children" : [ {
+        "callExpression" : "request.getMethod()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "HttpMethod.valueOf(request.getMethod())",
+        "children" : null
+      }, {
+        "callExpression" : "request.getRequestURI()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getContentType()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getRequestURL()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getRequestURL().toString()",
+        "children" : [ {
+          "callExpression" : "request.getRequestURL()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "request.getPathInfo()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "requestPath.startsWith(ProxyEndpoint.PROXY_PATH)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getParameterNames()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "parameterNames.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getParameterValues(parameterName)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "values.add(value)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "call.parameters.put(parameterName, values)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getHeaderNames()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "headerNames.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getHeaders(headerName)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "headerValues.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "values.add(value)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "call.headers.put(headerName, values)",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "proxyService.proxy(call, systemType, ProxyFilter.of(null, label))",
+      "children" : [ {
+        "callExpression" : "call.getServiceName()",
+        "children" : null
+      }, {
+        "callExpression" : "LOGGER.info(\"Request \" + call.getServiceName() + \", target system: \" + targetSystemType + \", proxy filter: \" + proxyFilter)",
+        "children" : [ {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        } ]
+      }, {
+        "callExpression" : "configsRepository.getProxyConfiguration()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system not found\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst().get()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+            "children" : [ {
+              "callExpression" : "targetSystems.stream()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system: \" + system)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "system.getAddress().matches(\"http(s?)://.*\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "new ExternalSystemClient(call, targetAddress).call()",
+        "children" : [ {
+          "callExpression" : "getClient()",
+          "children" : [ {
+            "callExpression" : "ClientBuilder.newClient()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "e.printStackTrace()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "client.target(externalServiceHost)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        }, {
+          "callExpression" : "client.target(externalServiceHost).path(call.getServiceName())",
+          "children" : [ {
+            "callExpression" : "client.target(externalServiceHost)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getServiceName()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getParameters()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getContentType()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getHeaders()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getMethod()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getMethod().toString()",
+          "children" : [ {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getPostBody()",
+          "children" : null
+        }, {
+          "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+          "children" : [ {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders()).method(call.getMethod().toString(), Entity.entity(call.getPostBody(), mediaType))",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          }, {
+            "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+            "children" : [ {
+              "callExpression" : "target.request(mediaType)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "call.getHeaders()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getMethod().toString()",
+            "children" : [ {
+              "callExpression" : "call.getMethod()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          }, {
+            "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+            "children" : [ {
+              "callExpression" : "call.getPostBody()",
+              "children" : null
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.error(\"Nie powiodło się ustawienie nagłówka TargetSystem.\", e)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "proxyGetByIp"
+    },
+    "executions" : [ {
+      "callExpression" : "Call.fromRequest(request)",
+      "children" : [ {
+        "callExpression" : "fromRequest(request, \"\")",
+        "children" : [ {
+          "callExpression" : "request.getMethod()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "HttpMethod.valueOf(request.getMethod())",
+          "children" : null
+        }, {
+          "callExpression" : "request.getRequestURI()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getContentType()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getRequestURL()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getRequestURL().toString()",
+          "children" : [ {
+            "callExpression" : "request.getRequestURL()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "request.getPathInfo()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requestPath.startsWith(ProxyEndpoint.PROXY_PATH)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getParameterNames()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "parameterNames.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getParameterValues(parameterName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "values.add(value)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.parameters.put(parameterName, values)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getHeaderNames()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "headerNames.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getHeaders(headerName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "headerValues.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "values.add(value)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.headers.put(headerName, values)",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "callExpression" : "request.getRemoteHost()",
+      "children" : [ ]
+    }, {
+      "callExpression" : "InetAddress.getByName(request.getRemoteHost())",
+      "children" : [ {
+        "callExpression" : "request.getRemoteHost()",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "InetAddress.getByName(request.getRemoteHost()).getHostAddress()",
+      "children" : [ {
+        "callExpression" : "request.getRemoteHost()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "InetAddress.getByName(request.getRemoteHost())",
+        "children" : [ {
+          "callExpression" : "request.getRemoteHost()",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "callExpression" : "proxyService.proxy(call, systemType, ProxyFilter.of(sourceAddress, null))",
+      "children" : [ {
+        "callExpression" : "call.getServiceName()",
+        "children" : null
+      }, {
+        "callExpression" : "LOGGER.info(\"Request \" + call.getServiceName() + \", target system: \" + targetSystemType + \", proxy filter: \" + proxyFilter)",
+        "children" : [ {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        } ]
+      }, {
+        "callExpression" : "configsRepository.getProxyConfiguration()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system not found\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst().get()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+            "children" : [ {
+              "callExpression" : "targetSystems.stream()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system: \" + system)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "system.getAddress().matches(\"http(s?)://.*\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "new ExternalSystemClient(call, targetAddress).call()",
+        "children" : [ {
+          "callExpression" : "getClient()",
+          "children" : [ {
+            "callExpression" : "ClientBuilder.newClient()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "e.printStackTrace()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "client.target(externalServiceHost)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        }, {
+          "callExpression" : "client.target(externalServiceHost).path(call.getServiceName())",
+          "children" : [ {
+            "callExpression" : "client.target(externalServiceHost)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getServiceName()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getParameters()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getContentType()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getHeaders()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getMethod()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getMethod().toString()",
+          "children" : [ {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getPostBody()",
+          "children" : null
+        }, {
+          "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+          "children" : [ {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders()).method(call.getMethod().toString(), Entity.entity(call.getPostBody(), mediaType))",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          }, {
+            "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+            "children" : [ {
+              "callExpression" : "target.request(mediaType)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "call.getHeaders()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getMethod().toString()",
+            "children" : [ {
+              "callExpression" : "call.getMethod()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          }, {
+            "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+            "children" : [ {
+              "callExpression" : "call.getPostBody()",
+              "children" : null
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.error(\"Nie powiodło się ustawienie nagłówka TargetSystem.\", e)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "proxyGetByLabel"
+    },
+    "executions" : [ {
+      "callExpression" : "Call.fromRequest(request)",
+      "children" : [ {
+        "callExpression" : "fromRequest(request, \"\")",
+        "children" : [ {
+          "callExpression" : "request.getMethod()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "HttpMethod.valueOf(request.getMethod())",
+          "children" : null
+        }, {
+          "callExpression" : "request.getRequestURI()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getContentType()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getRequestURL()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getRequestURL().toString()",
+          "children" : [ {
+            "callExpression" : "request.getRequestURL()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "request.getPathInfo()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requestPath.startsWith(ProxyEndpoint.PROXY_PATH)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getParameterNames()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "parameterNames.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getParameterValues(parameterName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "values.add(value)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.parameters.put(parameterName, values)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getHeaderNames()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "headerNames.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getHeaders(headerName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "headerValues.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "values.add(value)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.headers.put(headerName, values)",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "callExpression" : "proxyService.proxy(call, systemType, ProxyFilter.of(null, label))",
+      "children" : [ {
+        "callExpression" : "call.getServiceName()",
+        "children" : null
+      }, {
+        "callExpression" : "LOGGER.info(\"Request \" + call.getServiceName() + \", target system: \" + targetSystemType + \", proxy filter: \" + proxyFilter)",
+        "children" : [ {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        } ]
+      }, {
+        "callExpression" : "configsRepository.getProxyConfiguration()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system not found\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst().get()",
+        "children" : [ {
+          "callExpression" : "targetSystems.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType)).findFirst()",
+          "children" : [ {
+            "callExpression" : "targetSystems.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "targetSystems.stream().filter(targetSystem -> targetSystem.getSystemType().equals(targetSystemType))",
+            "children" : [ {
+              "callExpression" : "targetSystems.stream()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "targetSystem.getSystemType().equals(targetSystemType)",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.info(\"Target system: \" + system)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "system.getAddress().matches(\"http(s?)://.*\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "new ExternalSystemClient(call, targetAddress).call()",
+        "children" : [ {
+          "callExpression" : "getClient()",
+          "children" : [ {
+            "callExpression" : "ClientBuilder.newClient()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "e.printStackTrace()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "client.target(externalServiceHost)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        }, {
+          "callExpression" : "client.target(externalServiceHost).path(call.getServiceName())",
+          "children" : [ {
+            "callExpression" : "client.target(externalServiceHost)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getServiceName()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getParameters()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getContentType()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getHeaders()",
+          "children" : null
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getMethod()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getMethod().toString()",
+          "children" : [ {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "call.getPostBody()",
+          "children" : null
+        }, {
+          "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+          "children" : [ {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders()).method(call.getMethod().toString(), Entity.entity(call.getPostBody(), mediaType))",
+          "children" : [ {
+            "callExpression" : "target.request(mediaType)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "call.getHeaders()",
+            "children" : null
+          }, {
+            "callExpression" : "target.request(mediaType).headers((MultivaluedMap<String, Object>) (MultivaluedMap<String, ? extends Object>) call.getHeaders())",
+            "children" : [ {
+              "callExpression" : "target.request(mediaType)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "call.getHeaders()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getMethod().toString()",
+            "children" : [ {
+              "callExpression" : "call.getMethod()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          }, {
+            "callExpression" : "Entity.entity(call.getPostBody(), mediaType)",
+            "children" : [ {
+              "callExpression" : "call.getPostBody()",
+              "children" : null
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "LOGGER.error(\"Nie powiodło się ustawienie nagłówka TargetSystem.\", e)",
+        "children" : [ ]
+      } ]
+    } ]
+  } ]
+}, {
+  "className" : {
+    "namePart" : "EventsEndpoint",
+    "packagePart" : "com.comarch.c2arm.stubserver.endpoints.events"
+  },
+  "methods" : [ {
+    "method" : {
+      "comment" : "",
+      "name" : "duplicates"
+    },
+    "executions" : [ {
+      "callExpression" : "eventsService.getDuplicates(profile)",
+      "children" : [ {
+        "callExpression" : "getRequests(profile)",
+        "children" : [ {
+          "callExpression" : "tmpAdapter.findTmp()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventsCache.getIfPresent(profile)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profileEvents.getHttpEvents()",
+          "children" : [ {
+            "callExpression" : "httpEventsMap.values()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "Lists.newArrayList(httpEventsMap.values())",
+            "children" : [ {
+              "callExpression" : "httpEventsMap.values()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "httpEvents.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requests.add(event.getRequest())",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEvents.stream().forEach(event -> {\r\n    requests.add(event.getRequest());\r\n})",
+          "children" : [ {
+            "callExpression" : "httpEvents.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "requests.add(event.getRequest())",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "System.currentTimeMillis()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "requests.get(0)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.currentTimeMillis()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "copiesToDel.add(event)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.currentTimeMillis()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "requests.get(j)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "EventComparator.testEvent(event, possibleDuplicate)",
+        "children" : [ {
+          "callExpression" : "testServiceName(event1.getServiceName(), event2.getServiceName())",
+          "children" : [ {
+            "callExpression" : "testString(serviceName1, serviceName2)",
+            "children" : [ {
+              "callExpression" : "str1.equals(str2)",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "testHttpMethod(event1.getHttpMethod(), event2.getHttpMethod())",
+          "children" : [ {
+            "callExpression" : "testString(httpMethod1, httpMethod2)",
+            "children" : [ {
+              "callExpression" : "str1.equals(str2)",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "testParameter(event1.getParameters(), event2.getParameters())",
+          "children" : null
+        }, {
+          "callExpression" : "testPostBody(event1.getPayload(), event2.getPayload())",
+          "children" : [ {
+            "callExpression" : "XmlBodyComparator.testPostBody(body1, body2)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "duplicatesMap.get(event.getId())",
+        "children" : [ ]
+      }, {
+        "callExpression" : "copiesToDel.add(possibleDuplicate)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "duplicates.add(possibleDuplicate)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.currentTimeMillis()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.out.println(\"innerItem: \" + (System.currentTimeMillis() - startInnerItem))",
+        "children" : [ {
+          "callExpression" : "System.currentTimeMillis()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "requests.removeAll(copiesToDel)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.currentTimeMillis()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.out.println(\"innerLoop: \" + (System.currentTimeMillis() - startInnerLoop))",
+        "children" : [ {
+          "callExpression" : "System.currentTimeMillis()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "System.currentTimeMillis()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "System.out.println(\"mainLoop: \" + (System.currentTimeMillis() - startMainLoop))",
+        "children" : [ {
+          "callExpression" : "System.currentTimeMillis()",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "/**\r\n * Pobiera request\r\n * @param profile\r\n * @return\r\n */\r\n",
+      "name" : "requests"
+    },
+    "executions" : [ {
+      "callExpression" : "eventsService.getRequests(profile)",
+      "children" : [ {
+        "callExpression" : "tmpAdapter.findTmp()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "httpEventsCache.getIfPresent(profile)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "profileEvents.getHttpEvents()",
+        "children" : [ {
+          "callExpression" : "httpEventsMap.values()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "Lists.newArrayList(httpEventsMap.values())",
+          "children" : [ {
+            "callExpression" : "httpEventsMap.values()",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "httpEvents.stream()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "requests.add(event.getRequest())",
+        "children" : [ ]
+      }, {
+        "callExpression" : "httpEvents.stream().forEach(event -> {\r\n    requests.add(event.getRequest());\r\n})",
+        "children" : [ {
+          "callExpression" : "httpEvents.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requests.add(event.getRequest())",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "eventDetails"
+    },
+    "executions" : [ {
+      "callExpression" : "eventsService.getEventDetails(profile, eventId, eventType)",
+      "children" : [ {
+        "callExpression" : "findEventInCache(profile, eventId)",
+        "children" : [ {
+          "callExpression" : "httpEventsCache.getIfPresent(profile)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profileEvents.findById(eventId)",
+          "children" : [ {
+            "callExpression" : "httpEventsMap.get(id)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "request.getRecordedHttpEventType().name()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "eventType.equals(request.getRecordedHttpEventType().name())",
+        "children" : [ {
+          "callExpression" : "request.getRecordedHttpEventType().name()",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "removeEvent"
+    },
+    "executions" : [ {
+      "callExpression" : "eventsService.removeEvent(profile, eventId)",
+      "children" : [ {
+        "callExpression" : "findEventInCache(profile, eventId)",
+        "children" : [ {
+          "callExpression" : "httpEventsCache.getIfPresent(profile)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profileEvents.findById(eventId)",
+          "children" : [ {
+            "callExpression" : "httpEventsMap.get(id)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "httpEventRepository.removeEvent(profile, httpEvent)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "refreshCache()",
+        "children" : [ {
+          "callExpression" : "httpEventsCache.invalidateAll()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventRepository.getHttpEventsForAllProfile()",
+          "children" : [ {
+            "callExpression" : "getHttpEvents(profile)",
+            "children" : [ {
+              "callExpression" : "getRequests(profile, true)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "findResponseByRequest(profile, requestEvent)",
+              "children" : [ {
+                "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "httpEvents.add(requestAndResponse)",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "profileEventsMap.put(profile, events)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "profiles.forEach(profile -> {\r\n    List<RequestAndResponse> events = getHttpEvents(profile);\r\n    profileEventsMap.put(profile, events);\r\n})",
+            "children" : [ {
+              "callExpression" : "getHttpEvents(profile)",
+              "children" : [ {
+                "callExpression" : "getRequests(profile, true)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "findResponseByRequest(profile, requestEvent)",
+                "children" : [ {
+                  "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                  "children" : [ ]
+                }, {
+                  "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                  "children" : [ ]
+                } ]
+              }, {
+                "callExpression" : "httpEvents.add(requestAndResponse)",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "profileEventsMap.put(profile, events)",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "httpEventsCache.put(profile, profileEvents)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventsMap.forEach((profile, requestAndResponses) -> {\r\n    ProfileEvents profileEvents = new ProfileEvents(profile, requestAndResponses);\r\n    httpEventsCache.put(profile, profileEvents);\r\n})",
+          "children" : [ {
+            "callExpression" : "httpEventsCache.put(profile, profileEvents)",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "updateEvent"
+    },
+    "executions" : [ {
+      "callExpression" : "eventsService.updateEvent(profile, eventId, content)",
+      "children" : [ {
+        "callExpression" : "httpEventRepository.updateEvent(profile, httpEvent)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "refreshCache()",
+        "children" : [ {
+          "callExpression" : "httpEventsCache.invalidateAll()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventRepository.getHttpEventsForAllProfile()",
+          "children" : [ {
+            "callExpression" : "getHttpEvents(profile)",
+            "children" : [ {
+              "callExpression" : "getRequests(profile, true)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "findResponseByRequest(profile, requestEvent)",
+              "children" : [ {
+                "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "httpEvents.add(requestAndResponse)",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "profileEventsMap.put(profile, events)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "profiles.forEach(profile -> {\r\n    List<RequestAndResponse> events = getHttpEvents(profile);\r\n    profileEventsMap.put(profile, events);\r\n})",
+            "children" : [ {
+              "callExpression" : "getHttpEvents(profile)",
+              "children" : [ {
+                "callExpression" : "getRequests(profile, true)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "findResponseByRequest(profile, requestEvent)",
+                "children" : [ {
+                  "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                  "children" : [ ]
+                }, {
+                  "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                  "children" : [ ]
+                } ]
+              }, {
+                "callExpression" : "httpEvents.add(requestAndResponse)",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "profileEventsMap.put(profile, events)",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "httpEventsCache.put(profile, profileEvents)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventsMap.forEach((profile, requestAndResponses) -> {\r\n    ProfileEvents profileEvents = new ProfileEvents(profile, requestAndResponses);\r\n    httpEventsCache.put(profile, profileEvents);\r\n})",
+          "children" : [ {
+            "callExpression" : "httpEventsCache.put(profile, profileEvents)",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "newEvent"
+    },
+    "executions" : [ {
+      "callExpression" : "Lists.newArrayList(content)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "newEvent"
+    },
+    "executions" : [ ]
+  } ]
+}, {
+  "className" : {
+    "namePart" : "MockEndpoint",
+    "packagePart" : "com.comarch.c2arm.stubserver.endpoints.mock"
+  },
+  "methods" : [ {
+    "method" : {
+      "comment" : "",
+      "name" : "postMock"
+    },
+    "executions" : [ {
+      "callExpression" : "Call.fromRequest(request, content)",
+      "children" : [ {
+        "callExpression" : "request.getMethod()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "HttpMethod.valueOf(request.getMethod())",
+        "children" : null
+      }, {
+        "callExpression" : "request.getRequestURI()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getContentType()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getRequestURL()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getRequestURL().toString()",
+        "children" : [ {
+          "callExpression" : "request.getRequestURL()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "request.getPathInfo()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "requestPath.startsWith(ProxyEndpoint.PROXY_PATH)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getParameterNames()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "parameterNames.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getParameterValues(parameterName)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "values.add(value)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "call.parameters.put(parameterName, values)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getHeaderNames()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "headerNames.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "request.getHeaders(headerName)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "headerValues.nextElement()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "values.add(value)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "call.headers.put(headerName, values)",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "mockService.processRequestByServiceName(call, profile)",
+      "children" : [ {
+        "callExpression" : "CallsHelper.logCall(call)",
+        "children" : [ {
+          "callExpression" : "call.getMethod()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getPath()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getContentType()",
+          "children" : null
+        }, {
+          "callExpression" : "log.info(\"{} Request to URL: {} of type {}\", va(call.getMethod(), call.getPath(), call.getContentType()))",
+          "children" : [ {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getPath()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getContentType()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "e.getKey()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "e.getValue()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "log.info(\" --> Header [{}] with value: [{}]\", e.getKey(), e.getValue())",
+          "children" : [ {
+            "callExpression" : "e.getKey()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "e.getValue()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "e.getKey()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "log.info(\" --> Parameter [{}] with value(s): \", e.getKey())",
+          "children" : [ {
+            "callExpression" : "e.getKey()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "log.info(\"      -> [{}]\", v)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "log.info(\" --> Body: \")",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getPostBody()",
+          "children" : null
+        }, {
+          "callExpression" : "log.info(call.getPostBody())",
+          "children" : [ {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          } ]
+        } ]
+      }, {
+        "callExpression" : "javax.ws.rs.core.Response.ok()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+        "children" : [ {
+          "callExpression" : "javax.ws.rs.core.Response.ok()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\").build()",
+        "children" : [ {
+          "callExpression" : "javax.ws.rs.core.Response.ok()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+          "children" : [ {
+            "callExpression" : "javax.ws.rs.core.Response.ok()",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "call.getServiceName()",
+        "children" : null
+      }, {
+        "callExpression" : "profileStubsCache.getProfileStubs(profile)",
+        "children" : [ {
+          "callExpression" : "cache.getIfPresent(profileName)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "profileStubs.findApplicableStub(call)",
+        "children" : [ {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        }, {
+          "callExpression" : "serviceStubsMap.get(serviceName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "serviceStubs.findApplicableStub(call)",
+          "children" : [ {
+            "callExpression" : "stub.isApplicable(call, serviceConfig)",
+            "children" : [ {
+              "callExpression" : "this.when.test(call, callContext)",
+              "children" : [ {
+                "callExpression" : "predicate.test(call, callContext)",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "profileStubs.findConfigByService(serviceName)",
+        "children" : [ {
+          "callExpression" : "findStubsByService(serviceName)",
+          "children" : [ {
+            "callExpression" : "serviceStubsMap.get(serviceName)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "serviceStubs.getServiceConfig()",
+          "children" : null
+        } ]
+      }, {
+        "callExpression" : "profileStubs.randomStubByService(serviceName)",
+        "children" : [ {
+          "callExpression" : "findStubsByService(serviceName)",
+          "children" : [ {
+            "callExpression" : "serviceStubsMap.get(serviceName)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "serviceStubs.randomStub()",
+          "children" : [ {
+            "callExpression" : "stubs.isEmpty()",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "createResponseByMismatchingAction(serviceConfig, call, profileStubs.randomStubByService(serviceName))",
+        "children" : [ {
+          "callExpression" : "javax.ws.rs.core.Response.ok()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+          "children" : [ {
+            "callExpression" : "javax.ws.rs.core.Response.ok()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\").build()",
+          "children" : [ {
+            "callExpression" : "javax.ws.rs.core.Response.ok()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+            "children" : [ {
+              "callExpression" : "javax.ws.rs.core.Response.ok()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "MismatchingAction.EMPTY_RESPONSE.equals(mismatchingAction)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "call.getPath()",
+        "children" : null
+      }, {
+        "callExpression" : "LOGGER.warn(\"Request {} hasn't been covered by any stubs.\", call.getPath())",
+        "children" : [ {
+          "callExpression" : "call.getPath()",
+          "children" : null
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getMock"
+    },
+    "executions" : [ {
+      "callExpression" : "Call.fromRequest(request)",
+      "children" : [ {
+        "callExpression" : "fromRequest(request, \"\")",
+        "children" : [ {
+          "callExpression" : "request.getMethod()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "HttpMethod.valueOf(request.getMethod())",
+          "children" : null
+        }, {
+          "callExpression" : "request.getRequestURI()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getContentType()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getRequestURL()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getRequestURL().toString()",
+          "children" : [ {
+            "callExpression" : "request.getRequestURL()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "request.getPathInfo()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requestPath.startsWith(ProxyEndpoint.PROXY_PATH)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getParameterNames()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "parameterNames.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getParameterValues(parameterName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "values.add(value)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.parameters.put(parameterName, values)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getHeaderNames()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "headerNames.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "request.getHeaders(headerName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "headerValues.nextElement()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "values.add(value)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.headers.put(headerName, values)",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "callExpression" : "mockService.processRequestByServiceName(call, profile)",
+      "children" : [ {
+        "callExpression" : "CallsHelper.logCall(call)",
+        "children" : [ {
+          "callExpression" : "call.getMethod()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getPath()",
+          "children" : null
+        }, {
+          "callExpression" : "call.getContentType()",
+          "children" : null
+        }, {
+          "callExpression" : "log.info(\"{} Request to URL: {} of type {}\", va(call.getMethod(), call.getPath(), call.getContentType()))",
+          "children" : [ {
+            "callExpression" : "call.getMethod()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getPath()",
+            "children" : null
+          }, {
+            "callExpression" : "call.getContentType()",
+            "children" : null
+          } ]
+        }, {
+          "callExpression" : "e.getKey()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "e.getValue()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "log.info(\" --> Header [{}] with value: [{}]\", e.getKey(), e.getValue())",
+          "children" : [ {
+            "callExpression" : "e.getKey()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "e.getValue()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "e.getKey()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "log.info(\" --> Parameter [{}] with value(s): \", e.getKey())",
+          "children" : [ {
+            "callExpression" : "e.getKey()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "log.info(\"      -> [{}]\", v)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "log.info(\" --> Body: \")",
+          "children" : [ ]
+        }, {
+          "callExpression" : "call.getPostBody()",
+          "children" : null
+        }, {
+          "callExpression" : "log.info(call.getPostBody())",
+          "children" : [ {
+            "callExpression" : "call.getPostBody()",
+            "children" : null
+          } ]
+        } ]
+      }, {
+        "callExpression" : "javax.ws.rs.core.Response.ok()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+        "children" : [ {
+          "callExpression" : "javax.ws.rs.core.Response.ok()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\").build()",
+        "children" : [ {
+          "callExpression" : "javax.ws.rs.core.Response.ok()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+          "children" : [ {
+            "callExpression" : "javax.ws.rs.core.Response.ok()",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "call.getServiceName()",
+        "children" : null
+      }, {
+        "callExpression" : "profileStubsCache.getProfileStubs(profile)",
+        "children" : [ {
+          "callExpression" : "cache.getIfPresent(profileName)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "profileStubs.findApplicableStub(call)",
+        "children" : [ {
+          "callExpression" : "call.getServiceName()",
+          "children" : null
+        }, {
+          "callExpression" : "serviceStubsMap.get(serviceName)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "serviceStubs.findApplicableStub(call)",
+          "children" : [ {
+            "callExpression" : "stub.isApplicable(call, serviceConfig)",
+            "children" : [ {
+              "callExpression" : "this.when.test(call, callContext)",
+              "children" : [ {
+                "callExpression" : "predicate.test(call, callContext)",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "profileStubs.findConfigByService(serviceName)",
+        "children" : [ {
+          "callExpression" : "findStubsByService(serviceName)",
+          "children" : [ {
+            "callExpression" : "serviceStubsMap.get(serviceName)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "serviceStubs.getServiceConfig()",
+          "children" : null
+        } ]
+      }, {
+        "callExpression" : "profileStubs.randomStubByService(serviceName)",
+        "children" : [ {
+          "callExpression" : "findStubsByService(serviceName)",
+          "children" : [ {
+            "callExpression" : "serviceStubsMap.get(serviceName)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "serviceStubs.randomStub()",
+          "children" : [ {
+            "callExpression" : "stubs.isEmpty()",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "createResponseByMismatchingAction(serviceConfig, call, profileStubs.randomStubByService(serviceName))",
+        "children" : [ {
+          "callExpression" : "javax.ws.rs.core.Response.ok()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+          "children" : [ {
+            "callExpression" : "javax.ws.rs.core.Response.ok()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\").build()",
+          "children" : [ {
+            "callExpression" : "javax.ws.rs.core.Response.ok()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "javax.ws.rs.core.Response.ok().encoding(\"UTF-8\")",
+            "children" : [ {
+              "callExpression" : "javax.ws.rs.core.Response.ok()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "MismatchingAction.EMPTY_RESPONSE.equals(mismatchingAction)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "call.getPath()",
+        "children" : null
+      }, {
+        "callExpression" : "LOGGER.warn(\"Request {} hasn't been covered by any stubs.\", call.getPath())",
+        "children" : [ {
+          "callExpression" : "call.getPath()",
+          "children" : null
+        } ]
+      } ]
+    } ]
+  } ]
+}, {
+  "className" : {
+    "namePart" : "ServicesConfigService",
+    "packagePart" : "com.comarch.c2arm.stubserver.endpoints.manager"
+  },
+  "methods" : [ {
+    "method" : {
+      "comment" : "",
+      "name" : "getProfiles"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getProfiles()",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "removeProfiles"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.removeProfiles(profile)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "createProfiles"
+    },
+    "executions" : [ {
+      "callExpression" : "profile.getProfile()",
+      "children" : null
+    }, {
+      "callExpression" : "profile.getBaseProfile()",
+      "children" : null
+    }, {
+      "callExpression" : "configsRepository.createProfiles(profile.getProfile(), profile.getBaseProfile())",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getServicesConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getServicesConfig(profile)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "/**\r\n * @return\r\n */\r\n",
+      "name" : "getServicesNames"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getServicesNames(profile)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "deleteServicesConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.deleteServicesConfig(profile, serviceName)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveServicesConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.saveServicesConfig(profile, serviceConfig, allowUpdate)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveOrUpdateDefaultServiceConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.saveOrUpdateDefaultServiceConfig(profile, defaultServiceConfig)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getDefaultServiceConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getDefaultServiceConfig(profile)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "deleteUserLoginConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.deleteUserLoginConfig(profile, userLoginConfig)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveOrUpdateUserLoginConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.saveOrUpdateUserLoginConfig(profile, userLoginConfig)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getUserLoginConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getUserLoginConfig(profile, skp)",
+      "children" : [ {
+        "callExpression" : "skp.equals(userLoginConfig.getSkp())",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getLoginConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getLoginConfig(profile)",
+      "children" : [ ]
+    } ]
+  } ]
+}, {
+  "className" : {
+    "namePart" : "ManagerEndpoint",
+    "packagePart" : "com.comarch.c2arm.stubserver.endpoints.manager"
+  },
+  "methods" : [ {
+    "method" : {
+      "comment" : "",
+      "name" : "getDomainName"
+    },
+    "executions" : [ {
+      "callExpression" : "logger.warn(\"\", e)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getProxyTargetSystems"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getProxyTargetSystems()",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveProxyTargetSystems"
+    },
+    "executions" : [ ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveProxySystemTypes"
+    },
+    "executions" : [ ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getProxySystemTypes"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getProxySystemTypes()",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getProxyConfiguration"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.getProxyConfiguration()",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveProxyConfiguration"
+    },
+    "executions" : [ {
+      "callExpression" : "configsRepository.saveProxyConfiguration(proxyConfiguration)",
+      "children" : [ ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getProfiles"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.getProfiles()",
+      "children" : [ {
+        "callExpression" : "configsRepository.getProfiles()",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "removeProfile"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.removeProfiles(profile)",
+      "children" : [ {
+        "callExpression" : "configsRepository.removeProfiles(profile)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "createProfile"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.createProfiles(profile)",
+      "children" : [ {
+        "callExpression" : "profile.getProfile()",
+        "children" : null
+      }, {
+        "callExpression" : "profile.getBaseProfile()",
+        "children" : null
+      }, {
+        "callExpression" : "configsRepository.createProfiles(profile.getProfile(), profile.getBaseProfile())",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getLoginConfigs"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.getLoginConfig(profile)",
+      "children" : [ {
+        "callExpression" : "configsRepository.getLoginConfig(profile)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getUserLoginConfigs"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.getUserLoginConfig(profile, skp)",
+      "children" : [ {
+        "callExpression" : "configsRepository.getUserLoginConfig(profile, skp)",
+        "children" : [ {
+          "callExpression" : "skp.equals(userLoginConfig.getSkp())",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "uploadTextToImport"
+    },
+    "executions" : [ {
+      "callExpression" : "log.getBytes(StandardCharsets.UTF_8)",
+      "children" : [ ]
+    }, {
+      "callExpression" : "importService.uploadToImport(inputStream, profile)",
+      "children" : [ {
+        "callExpression" : "logReader.read()",
+        "children" : [ {
+          "callExpression" : "logReader.readLine()",
+          "children" : [ {
+            "callExpression" : "fileLines.get(i)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "line.matches(LINE_LOG_PATTERN)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString().isEmpty()",
+            "children" : [ {
+              "callExpression" : "multiLineLog.toString()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "new EventMessageParser(line).parse()",
+          "children" : [ {
+            "callExpression" : "logLine.getLogger()",
+            "children" : null
+          }, {
+            "callExpression" : "logLine.getLogger().indexOf(\"C2armClientLoggingOutInterceptor\")",
+            "children" : [ {
+              "callExpression" : "logLine.getLogger()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "message.split(\"Headers: |Payload: \", 3)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "msgParts[0].split(\", \")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "httpEl.indexOf(\"ID: \")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "msgParts[1].trim()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headersStr.length()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headersStr.substring(1, headersStr.length() - 1)",
+            "children" : [ {
+              "callExpression" : "headersStr.length()",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "Pattern.compile(\"(?<header>(\\\\.|[^=,\\\\[\\\\]])*=(\\\\[(\\\\.|[^\\\\]])*\\\\]))\")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "pattern.matcher(headersStr)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "matcher.group(\"header\")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "header.split(\"=\", 2)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headerParts[1].trim()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "valuesStr.length()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+            "children" : [ {
+              "callExpression" : "valuesStr.length()",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1).split(\", \")",
+            "children" : [ {
+              "callExpression" : "valuesStr.length()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+              "children" : [ {
+                "callExpression" : "valuesStr.length()",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "callExpression" : "Lists.newArrayList(valuesStr.substring(1, valuesStr.length() - 1).split(\", \"))",
+            "children" : [ {
+              "callExpression" : "valuesStr.length()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+              "children" : [ {
+                "callExpression" : "valuesStr.length()",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1).split(\", \")",
+              "children" : [ {
+                "callExpression" : "valuesStr.length()",
+                "children" : [ ]
+              }, {
+                "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+                "children" : [ {
+                  "callExpression" : "valuesStr.length()",
+                  "children" : [ ]
+                } ]
+              } ]
+            } ]
+          }, {
+            "callExpression" : "headerParts[0].trim()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headers.put(headerParts[0].trim(), values)",
+            "children" : [ {
+              "callExpression" : "headerParts[0].trim()",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "msgParts[2].trim()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "logReader.readLine()",
+          "children" : [ {
+            "callExpression" : "fileLines.get(i)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "line.matches(LINE_LOG_PATTERN)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString().isEmpty()",
+            "children" : [ {
+              "callExpression" : "multiLineLog.toString()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "RecordedHttpEventType.REQUEST.equals(event.getRecordedHttpEventType())",
+          "children" : [ ]
+        }, {
+          "callExpression" : "logReader.readLine()",
+          "children" : [ {
+            "callExpression" : "fileLines.get(i)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "line.matches(LINE_LOG_PATTERN)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString().isEmpty()",
+            "children" : [ {
+              "callExpression" : "multiLineLog.toString()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "Lists.newArrayList(requests)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "all.addAll(responses)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "eventsService.getRequests(profile)",
+        "children" : [ {
+          "callExpression" : "tmpAdapter.findTmp()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventsCache.getIfPresent(profile)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profileEvents.getHttpEvents()",
+          "children" : [ {
+            "callExpression" : "httpEventsMap.values()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "Lists.newArrayList(httpEventsMap.values())",
+            "children" : [ {
+              "callExpression" : "httpEventsMap.values()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "httpEvents.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requests.add(event.getRequest())",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEvents.stream().forEach(event -> {\r\n    requests.add(event.getRequest());\r\n})",
+          "children" : [ {
+            "callExpression" : "httpEvents.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "requests.add(event.getRequest())",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "duplicatesToDelete.add(requestAndResponse)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "events.removeAll(duplicatesToDelete)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "uploadFileToImport"
+    },
+    "executions" : [ {
+      "callExpression" : "e.getMessage()",
+      "children" : [ ]
+    }, {
+      "callExpression" : "logger.error(e.getMessage())",
+      "children" : [ {
+        "callExpression" : "e.getMessage()",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "importService.uploadToImport(inputStream, profile)",
+      "children" : [ {
+        "callExpression" : "logReader.read()",
+        "children" : [ {
+          "callExpression" : "logReader.readLine()",
+          "children" : [ {
+            "callExpression" : "fileLines.get(i)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "line.matches(LINE_LOG_PATTERN)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString().isEmpty()",
+            "children" : [ {
+              "callExpression" : "multiLineLog.toString()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "new EventMessageParser(line).parse()",
+          "children" : [ {
+            "callExpression" : "logLine.getLogger()",
+            "children" : null
+          }, {
+            "callExpression" : "logLine.getLogger().indexOf(\"C2armClientLoggingOutInterceptor\")",
+            "children" : [ {
+              "callExpression" : "logLine.getLogger()",
+              "children" : null
+            } ]
+          }, {
+            "callExpression" : "message.split(\"Headers: |Payload: \", 3)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "msgParts[0].split(\", \")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "httpEl.indexOf(\"ID: \")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "msgParts[1].trim()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headersStr.length()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headersStr.substring(1, headersStr.length() - 1)",
+            "children" : [ {
+              "callExpression" : "headersStr.length()",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "Pattern.compile(\"(?<header>(\\\\.|[^=,\\\\[\\\\]])*=(\\\\[(\\\\.|[^\\\\]])*\\\\]))\")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "pattern.matcher(headersStr)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "matcher.group(\"header\")",
+            "children" : [ ]
+          }, {
+            "callExpression" : "header.split(\"=\", 2)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headerParts[1].trim()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "valuesStr.length()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+            "children" : [ {
+              "callExpression" : "valuesStr.length()",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1).split(\", \")",
+            "children" : [ {
+              "callExpression" : "valuesStr.length()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+              "children" : [ {
+                "callExpression" : "valuesStr.length()",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "callExpression" : "Lists.newArrayList(valuesStr.substring(1, valuesStr.length() - 1).split(\", \"))",
+            "children" : [ {
+              "callExpression" : "valuesStr.length()",
+              "children" : [ ]
+            }, {
+              "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+              "children" : [ {
+                "callExpression" : "valuesStr.length()",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1).split(\", \")",
+              "children" : [ {
+                "callExpression" : "valuesStr.length()",
+                "children" : [ ]
+              }, {
+                "callExpression" : "valuesStr.substring(1, valuesStr.length() - 1)",
+                "children" : [ {
+                  "callExpression" : "valuesStr.length()",
+                  "children" : [ ]
+                } ]
+              } ]
+            } ]
+          }, {
+            "callExpression" : "headerParts[0].trim()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "headers.put(headerParts[0].trim(), values)",
+            "children" : [ {
+              "callExpression" : "headerParts[0].trim()",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "msgParts[2].trim()",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "logReader.readLine()",
+          "children" : [ {
+            "callExpression" : "fileLines.get(i)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "line.matches(LINE_LOG_PATTERN)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString().isEmpty()",
+            "children" : [ {
+              "callExpression" : "multiLineLog.toString()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "RecordedHttpEventType.REQUEST.equals(event.getRecordedHttpEventType())",
+          "children" : [ ]
+        }, {
+          "callExpression" : "logReader.readLine()",
+          "children" : [ {
+            "callExpression" : "fileLines.get(i)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "line.matches(LINE_LOG_PATTERN)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "multiLineLog.toString().isEmpty()",
+            "children" : [ {
+              "callExpression" : "multiLineLog.toString()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "Lists.newArrayList(requests)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "all.addAll(responses)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "eventsService.getRequests(profile)",
+        "children" : [ {
+          "callExpression" : "tmpAdapter.findTmp()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEventsCache.getIfPresent(profile)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profileEvents.getHttpEvents()",
+          "children" : [ {
+            "callExpression" : "httpEventsMap.values()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "Lists.newArrayList(httpEventsMap.values())",
+            "children" : [ {
+              "callExpression" : "httpEventsMap.values()",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "httpEvents.stream()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "requests.add(event.getRequest())",
+          "children" : [ ]
+        }, {
+          "callExpression" : "httpEvents.stream().forEach(event -> {\r\n    requests.add(event.getRequest());\r\n})",
+          "children" : [ {
+            "callExpression" : "httpEvents.stream()",
+            "children" : [ ]
+          }, {
+            "callExpression" : "requests.add(event.getRequest())",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "duplicatesToDelete.add(requestAndResponse)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "events.removeAll(duplicatesToDelete)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "deleteUserLoginConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.deleteUserLoginConfig(profile, userLoginConfig)",
+      "children" : [ {
+        "callExpression" : "configsRepository.deleteUserLoginConfig(profile, userLoginConfig)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveOrUpdateUserLoginConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.saveOrUpdateUserLoginConfig(profile, userLoginConfig)",
+      "children" : [ {
+        "callExpression" : "configsRepository.saveOrUpdateUserLoginConfig(profile, userLoginConfig)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getServicesConfigs"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.getServicesConfig(profile)",
+      "children" : [ {
+        "callExpression" : "configsRepository.getServicesConfig(profile)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getServicesNames"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.getServicesNames(profile)",
+      "children" : [ {
+        "callExpression" : "configsRepository.getServicesNames(profile)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "deleteServicesConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.deleteServicesConfig(profile, serviceName)",
+      "children" : [ {
+        "callExpression" : "configsRepository.deleteServicesConfig(profile, serviceName)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveOrUpdateServicesConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.saveServicesConfig(profile, serviceConfig, allowUpdate)",
+      "children" : [ {
+        "callExpression" : "configsRepository.saveServicesConfig(profile, serviceConfig, allowUpdate)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "getDefaultServiceConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.getDefaultServiceConfig(profile)",
+      "children" : [ {
+        "callExpression" : "configsRepository.getDefaultServiceConfig(profile)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "saveOrUpdateDefaultServiceConfig"
+    },
+    "executions" : [ {
+      "callExpression" : "servicesConfigService.saveOrUpdateDefaultServiceConfig(profile, config)",
+      "children" : [ {
+        "callExpression" : "configsRepository.saveOrUpdateDefaultServiceConfig(profile, defaultServiceConfig)",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "convert"
+    },
+    "executions" : [ {
+      "callExpression" : "convertService.convert()",
+      "children" : [ {
+        "callExpression" : "e.printStackTrace()",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "Response.ok()",
+      "children" : [ ]
+    }, {
+      "callExpression" : "Response.ok().entity(\"Operacja zakończona\")",
+      "children" : [ {
+        "callExpression" : "Response.ok()",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "Response.ok().entity(\"Operacja zakończona\").build()",
+      "children" : [ {
+        "callExpression" : "Response.ok()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "Response.ok().entity(\"Operacja zakończona\")",
+        "children" : [ {
+          "callExpression" : "Response.ok()",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "configuration"
+    },
+    "executions" : [ {
+      "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\")",
+      "children" : [ ]
+    }, {
+      "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\").type(MediaType.APPLICATION_JSON)",
+      "children" : [ {
+        "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\")",
+        "children" : [ ]
+      } ]
+    }, {
+      "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\").type(MediaType.APPLICATION_JSON).build()",
+      "children" : [ {
+        "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\")",
+        "children" : [ ]
+      }, {
+        "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\").type(MediaType.APPLICATION_JSON)",
+        "children" : [ {
+          "callExpression" : "Response.ok(\"{\\\"stubServerHost\\\":\\\"/stubserver/api\\\"}\")",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "method" : {
+      "comment" : "",
+      "name" : "reload"
+    },
+    "executions" : [ {
+      "callExpression" : "mockService.refreshCache()",
+      "children" : [ {
+        "callExpression" : "profileStubsCache.invalidateAll()",
+        "children" : [ {
+          "callExpression" : "cache.invalidateAll()",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "stubsService.getServiceStubsListForAllProfiles()",
+        "children" : [ {
+          "callExpression" : "configsRepository.getProfiles()",
+          "children" : [ ]
+        }, {
+          "callExpression" : "getServiceStubsList(profile)",
+          "children" : [ {
+            "callExpression" : "httpEventRepository.getHttpEvents(profile)",
+            "children" : [ {
+              "callExpression" : "getRequests(profile, true)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "findResponseByRequest(profile, requestEvent)",
+              "children" : [ {
+                "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "httpEvents.add(requestAndResponse)",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "createStubs(requestAndResponses)",
+            "children" : null
+          }, {
+            "callExpression" : "requestAndResponses.get(0)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "httpEventRepository.findServiceConfigByEventPath(profile, requestAndResponses.get(0).getRequest().getCurrentEventRelativeDir())",
+            "children" : [ ]
+          }, {
+            "callExpression" : "serviceStubsList.add(serviceStubs)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "httpEventsMap.forEach((serviceName, requestAndResponses) -> {\r\n    List<Stub> stubs = createStubs(requestAndResponses);\r\n    ServiceConfig serviceConfig = httpEventRepository.findServiceConfigByEventPath(profile, requestAndResponses.get(0).getRequest().getCurrentEventRelativeDir());\r\n    ServiceStubs serviceStubs = new ServiceStubs(serviceName, stubs, serviceConfig);\r\n    serviceStubsList.add(serviceStubs);\r\n})",
+            "children" : [ {
+              "callExpression" : "createStubs(requestAndResponses)",
+              "children" : null
+            }, {
+              "callExpression" : "requestAndResponses.get(0)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "httpEventRepository.findServiceConfigByEventPath(profile, requestAndResponses.get(0).getRequest().getCurrentEventRelativeDir())",
+              "children" : [ ]
+            }, {
+              "callExpression" : "serviceStubsList.add(serviceStubs)",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "callExpression" : "profileStubsMap.put(profile, events)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profiles.forEach(profile -> {\r\n    List<ServiceStubs> events = getServiceStubsList(profile);\r\n    profileStubsMap.put(profile, events);\r\n})",
+          "children" : [ {
+            "callExpression" : "getServiceStubsList(profile)",
+            "children" : [ {
+              "callExpression" : "httpEventRepository.getHttpEvents(profile)",
+              "children" : [ {
+                "callExpression" : "getRequests(profile, true)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "findResponseByRequest(profile, requestEvent)",
+                "children" : [ {
+                  "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                  "children" : [ ]
+                }, {
+                  "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                  "children" : [ ]
+                } ]
+              }, {
+                "callExpression" : "httpEvents.add(requestAndResponse)",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "createStubs(requestAndResponses)",
+              "children" : null
+            }, {
+              "callExpression" : "requestAndResponses.get(0)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "httpEventRepository.findServiceConfigByEventPath(profile, requestAndResponses.get(0).getRequest().getCurrentEventRelativeDir())",
+              "children" : [ ]
+            }, {
+              "callExpression" : "serviceStubsList.add(serviceStubs)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "httpEventsMap.forEach((serviceName, requestAndResponses) -> {\r\n    List<Stub> stubs = createStubs(requestAndResponses);\r\n    ServiceConfig serviceConfig = httpEventRepository.findServiceConfigByEventPath(profile, requestAndResponses.get(0).getRequest().getCurrentEventRelativeDir());\r\n    ServiceStubs serviceStubs = new ServiceStubs(serviceName, stubs, serviceConfig);\r\n    serviceStubsList.add(serviceStubs);\r\n})",
+              "children" : [ {
+                "callExpression" : "createStubs(requestAndResponses)",
+                "children" : null
+              }, {
+                "callExpression" : "requestAndResponses.get(0)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "httpEventRepository.findServiceConfigByEventPath(profile, requestAndResponses.get(0).getRequest().getCurrentEventRelativeDir())",
+                "children" : [ ]
+              }, {
+                "callExpression" : "serviceStubsList.add(serviceStubs)",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "callExpression" : "profileStubsMap.put(profile, events)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "servicesConfigService.getLoginConfig(profile)",
+        "children" : [ {
+          "callExpression" : "configsRepository.getLoginConfig(profile)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "servicesConfigService.getDefaultServiceConfig(profile)",
+        "children" : [ {
+          "callExpression" : "configsRepository.getDefaultServiceConfig(profile)",
+          "children" : [ ]
+        } ]
+      }, {
+        "callExpression" : "profileStubsCache.addProfileStubs(profileStubs)",
+        "children" : [ {
+          "callExpression" : "profileStubs.getName()",
+          "children" : null
+        }, {
+          "callExpression" : "cache.put(profileStubs.getName(), profileStubs)",
+          "children" : [ {
+            "callExpression" : "profileStubs.getName()",
+            "children" : null
+          } ]
+        } ]
+      }, {
+        "callExpression" : "serviceStubsMap.forEach((profile, serviceStubs) -> {\r\n    LoginConfig loginConfig = servicesConfigService.getLoginConfig(profile);\r\n    DefaultServiceConfig defaultServiceConfig = servicesConfigService.getDefaultServiceConfig(profile);\r\n    ProfileStubs profileStubs = new ProfileStubs(profile, serviceStubs, loginConfig, defaultServiceConfig);\r\n    profileStubsCache.addProfileStubs(profileStubs);\r\n})",
+        "children" : [ {
+          "callExpression" : "servicesConfigService.getLoginConfig(profile)",
+          "children" : [ {
+            "callExpression" : "configsRepository.getLoginConfig(profile)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "servicesConfigService.getDefaultServiceConfig(profile)",
+          "children" : [ {
+            "callExpression" : "configsRepository.getDefaultServiceConfig(profile)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "profileStubsCache.addProfileStubs(profileStubs)",
+          "children" : [ {
+            "callExpression" : "profileStubs.getName()",
+            "children" : null
+          }, {
+            "callExpression" : "cache.put(profileStubs.getName(), profileStubs)",
+            "children" : [ {
+              "callExpression" : "profileStubs.getName()",
+              "children" : null
+            } ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "callExpression" : "cachedHttpEventsService.refreshCache()",
+      "children" : [ {
+        "callExpression" : "httpEventsCache.invalidateAll()",
+        "children" : [ ]
+      }, {
+        "callExpression" : "httpEventRepository.getHttpEventsForAllProfile()",
+        "children" : [ {
+          "callExpression" : "getHttpEvents(profile)",
+          "children" : [ {
+            "callExpression" : "getRequests(profile, true)",
+            "children" : [ ]
+          }, {
+            "callExpression" : "findResponseByRequest(profile, requestEvent)",
+            "children" : [ {
+              "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "httpEvents.add(requestAndResponse)",
+            "children" : [ ]
+          } ]
+        }, {
+          "callExpression" : "profileEventsMap.put(profile, events)",
+          "children" : [ ]
+        }, {
+          "callExpression" : "profiles.forEach(profile -> {\r\n    List<RequestAndResponse> events = getHttpEvents(profile);\r\n    profileEventsMap.put(profile, events);\r\n})",
+          "children" : [ {
+            "callExpression" : "getHttpEvents(profile)",
+            "children" : [ {
+              "callExpression" : "getRequests(profile, true)",
+              "children" : [ ]
+            }, {
+              "callExpression" : "findResponseByRequest(profile, requestEvent)",
+              "children" : [ {
+                "callExpression" : "requestEvent.getRecordedHttpEventType().equals(RecordedHttpEventType.REQUEST)",
+                "children" : [ ]
+              }, {
+                "callExpression" : "path.replace(\"REQUEST\", \"RESPONSE\")",
+                "children" : [ ]
+              } ]
+            }, {
+              "callExpression" : "httpEvents.add(requestAndResponse)",
+              "children" : [ ]
+            } ]
+          }, {
+            "callExpression" : "profileEventsMap.put(profile, events)",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "callExpression" : "httpEventsCache.put(profile, profileEvents)",
+        "children" : [ ]
+      }, {
+        "callExpression" : "httpEventsMap.forEach((profile, requestAndResponses) -> {\r\n    ProfileEvents profileEvents = new ProfileEvents(profile, requestAndResponses);\r\n    httpEventsCache.put(profile, profileEvents);\r\n})",
+        "children" : [ {
+          "callExpression" : "httpEventsCache.put(profile, profileEvents)",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  } ]
+} ]
